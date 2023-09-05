@@ -1,0 +1,10 @@
+def seniority(n, planets):
+    sorted_planets = sorted(enumerate(planets), key=lambda x: x[1])
+    result = [0] * n
+    for i, (index, age) in enumerate(sorted_planets):
+        result[index] = i
+    return result
+
+n = int(input().strip())
+planets = list(map(int, input().strip().split()))
+print(*seniority(n, planets))

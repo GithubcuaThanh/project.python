@@ -1,0 +1,10 @@
+def candy(n, c, t, p):
+    p = sorted(p, reverse=True)
+    time = 0
+    for i in range(0, n, c):
+        time = max(time, (p[i] + t - 1) // t)
+    return time
+
+n, c, t = map(int, input().split())
+p = list(map(int, input().split()))
+print(candy(n, c, t, p))

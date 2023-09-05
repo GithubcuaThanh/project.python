@@ -1,0 +1,17 @@
+def get_new_file_name(file_name, used_file_names):
+    if file_name not in used_file_names:
+        return file_name
+    k = 1
+    new_file_name = file_name + "(" + str(k) + ")"
+    while new_file_name in used_file_names:
+        k += 1
+        new_file_name = file_name + "(" + str(k) + ")"
+    return new_file_name
+
+n = int(input().strip())
+used_file_names = set()
+for i in range(n):
+    file_name = input().strip()
+    new_file_name = get_new_file_name(file_name, used_file_names)
+    used_file_names.add(new_file_name)
+    print(new_file_name)

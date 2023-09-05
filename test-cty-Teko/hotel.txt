@@ -1,0 +1,21 @@
+def minimum_rooms(n, arrival, rental):
+    arrival_times = [(arrival[i], 1) for i in range(n)]
+    rental_times = [(rental[i], 0) for i in range(n)]
+    times = arrival_times + rental_times
+    times.sort(key=lambda x: x[0])
+
+    rooms = 0
+    max_rooms = 0
+    for time in times:
+        if time[1] == 1:
+            rooms += 1
+            max_rooms = max(max_rooms, rooms)
+        else:
+            rooms -= 1
+
+    return max_rooms
+
+n = int(input().strip())
+arrival = list(map(int, input().strip().split()))
+rental = list(map(int, input().strip().split()))
+print(minimum_rooms(n, arrival, rental))

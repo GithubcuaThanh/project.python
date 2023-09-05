@@ -1,0 +1,26 @@
+def check_access(file_system, file_name, operation):
+    if operation in file_system.get(file_name, set()):
+        return 'OK'
+    else:
+        return 'Access denied'
+
+n = int(input().strip())
+file_system = {}
+for i in range(n):
+    file_info = input().strip().split()
+    file_name = file_info[0]
+    allowed_ops = set(file_info[1:])
+    file_system[file_name] = allowed_ops
+
+m = int(input().strip())
+for i in range(m):
+    request = input().strip().split()
+    op = request[0]
+    file_name = request[1]
+    if op == 'read':
+        op = 'R'
+    elif op == 'write':
+        op = 'W'
+    elif op == 'execute':
+        op = 'X'
+    print(check_access(file_system, file_name, op))
